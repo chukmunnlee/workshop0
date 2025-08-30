@@ -20,7 +20,7 @@ jobs:
         uses: mscoutermarsh/cowsays-action@master
         with:
          # step - context
-         text: 'Moo moo cow! ${{ steps.s01.outputs.CURR_DATE }}'
+         text: 'Moo moo cow! ${{ steps.s01.outputs.CURR_DATE }}, ${{ github.ref }}, ${{ github.repository }}'
          color: green
       #- id: s01
       #  # List the directory
