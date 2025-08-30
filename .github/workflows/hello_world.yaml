@@ -12,11 +12,15 @@ jobs:
       steps:
       - id: s00
         # running some shell bash command
-        run: echo "Current time in GitHub is $(date)"
+        run: echo "Current time in GitHub is $(date), ${GITHUB_OUTPUT}"
+      - id: s01
+        # create a value and pass to the next step
+        run: echo "CURR_DATE=$(date)" >> $GITHUB_OUTPUT
       - id: s02
         uses: mscoutermarsh/cowsays-action@master
         with:
-         text: 'Moo moo cow!'
+         # step - context
+         text: 'Moo moo cow! ${{ steps.s01.outputs.CURR_DATE }}'
          color: green
       #- id: s01
       #  # List the directory
